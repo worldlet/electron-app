@@ -1,0 +1,28 @@
+{
+  "name": "my-first-app",
+  "version": "0.0.0",
+  "description": "我的第一个app",
+  "author": "xuanzi",
+  "license": "MIT",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "electron": "^28.0.0",
+    "pinia": "^2.1.7",
+    "vue": "^3.3.10",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.1",
+    "electron": "^28.0.0",
+    "vite": "^5.0.5"
+  }
+}
