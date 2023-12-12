@@ -1,4 +1,5 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
+const path = require('node:path')
 
 function createWindow () {
   // 创建浏览器窗口
@@ -6,7 +7,8 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.js')
     }
   })
 
@@ -20,6 +22,7 @@ function createWindow () {
 
 // 如果没有窗口打开则打开一个窗口
 app.whenReady().then(() => {
+  ipcMain.handle('ping', () => 'pong')
   createWindow()
 
   app.on('activate', () => {
