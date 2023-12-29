@@ -20,8 +20,9 @@ coverage
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
-.run
+*.idea
+*.run
+*.vite
 *.suo
 *.ntvs*
 *.njsproj

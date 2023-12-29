@@ -26,7 +26,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <el-form :inline="true" ref="actionBox" :model="actionForm" class="action-bar">
+    <el-form :inline="true" ref="actionBox" :model="actionForm" class="action-bar" style="-webkit-app-region: drag">
       <el-form-item label="文字" prop="text">
         <el-input v-model="actionForm.text" placeholder="请输入演示文字" clearable />
       </el-form-item>

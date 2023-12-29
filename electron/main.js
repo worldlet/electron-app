@@ -1,11 +1,14 @@
 const { app, BrowserWindow, ipcMain, Notification } = require('electron')
 const path = require('node:path')
+const { join, resolve } = require('path');
 const fontList = require('font-list')
 // const FontManager = require('font-manager')
 
-const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer');
+// const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer');
 
 // const isDev = process.env.NODE_ENV === 'development';
+
+if (require('electron-squirrel-startup')) app.quit();
 
 let fontArr;
 
@@ -14,8 +17,10 @@ async function createWindow () {
   const win = new BrowserWindow({
     width: 900,
     height: 600,
-    frame: true,
-    // titleBarStyle: 'hidden',  // "default" | "hidden" | "hiddenInset" | "customButtonsOnHover"
+    center: true,
+    icon: './public/icon.png',
+    frame: false,
+    titleBarStyle: 'hidden',  // "default" | "hidden" | "hiddenInset" | "customButtonsOnHover"
     titleBarOverlay: {
       color: 'rgba(255,255,255,0)',
       symbolColor: '#74b1be',
@@ -49,12 +54,12 @@ async function createWindow () {
 
   // 加载 Vue 应用的 index.html 文件
   // win.loadURL(isDev ? 'http://localhost:5173/' : `file://${__dirname}/dist/index.html`)
-  win.loadURL('http://localhost:5173/')
+  // win.loadURL('http://localhost:5173/')
   // join(path.resolve(__dirname, '..'), '/dist/index.html')
-  // win.loadFile(join(__dirname, '..', 'dist', 'index.html'))
+  win.loadFile(join(__dirname, '..', 'dist', 'index.html'))
 
   // 打开开发者工具
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 }
 
 const NOTIFICATION_TITLE = 'Basic Notification'
@@ -66,9 +71,9 @@ function showNotification () {
 
 // 如果没有窗口打开则打开一个窗口
 app.whenReady().then(() => {
-  installExtension('nhdogjmejiglipccpnnnanhbledajbpd')
+  /*installExtension('nhdogjmejiglipccpnnnanhbledajbpd')
       .then((name) => console.log(`Added Extension:  ${name}`))
-      .catch((err) => console.log('An error occurred: ', err));
+      .catch((err) => console.log('An error occurred: ', err));*/
 
 
   ipcMain.handle('fonts', () => fontArr)
